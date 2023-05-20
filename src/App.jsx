@@ -1,16 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { lazy } from "react";
 import "./App.css";
-import { UsersList } from "./components/UsersList/UsersList";
+import { Route, Routes } from "react-router-dom";
+
+const SharedLayout = lazy(() =>
+  import("./components/SharedLayout/SharedLayout")
+);
+const HomePage = lazy(() => import("./pages/HomePage"));
+const TweetsPage = lazy(() => import("./pages/TweetsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFound"));
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <UsersList />
-    </>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="tweets" element={<TweetsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
