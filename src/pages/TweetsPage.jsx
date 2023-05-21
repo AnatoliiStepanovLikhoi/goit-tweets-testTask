@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
 import { UsersList } from "../components/UsersList/UsersList";
+import { BackButton, GoBackWrapper } from "./TweetsPage.styled";
 
 const TweetsPage = () => {
   return (
     <div>
-      <NavLink to="/">Go Back</NavLink>
+      <GoBackWrapper>
+        <BackButton to="/">Go Back</BackButton>
+      </GoBackWrapper>
       <UsersList />
     </div>
   );

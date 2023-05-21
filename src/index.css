@@ -5,6 +5,7 @@
     sans-serif;
   line-height: 1.2;
   font-weight: 500;
+  font-size: 20px;
 
   color-scheme: light dark;
   color: rgba(235, 216, 255, 1);
@@ -41,13 +42,4 @@ p {
 
 button {
   cursor: pointer;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }

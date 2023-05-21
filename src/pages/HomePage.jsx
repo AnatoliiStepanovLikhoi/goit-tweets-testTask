@@ -1,7 +1,9 @@
+import { HomePageTitle } from "./HomePage.styled";
+
 const HomePage = () => {
   return (
     <div>
-      <h1>HomePage</h1>
+      <HomePageTitle>Welcome to homepage</HomePageTitle>
     </div>
   );
 };

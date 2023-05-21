@@ -1,17 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
-import { TiMessages } from "react-icons/ti";
-import { HeaderWrapper } from "./Header.styled";
+import { Link } from "react-router-dom";
+import { HeaderWrapper, HeaderLink, MessageLogo } from "./Header.styled";
 
 export function Header() {
   return (
     <HeaderWrapper>
       <Link to="/">
-        <TiMessages />
+        <MessageLogo />
       </Link>
 
       <div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="tweets">Tweets</NavLink>
+        <HeaderLink to="/">Home</HeaderLink>
+        <HeaderLink to="/tweets">Tweets</HeaderLink>
       </div>
     </HeaderWrapper>
   );

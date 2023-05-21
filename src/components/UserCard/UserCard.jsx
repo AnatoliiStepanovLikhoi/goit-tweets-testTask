@@ -6,20 +6,43 @@ import {
   ImageLogo,
   AvatarCircle,
   AvatarImage,
+  InfoWrapper,
+  InfoTweets,
+  InfoFollowers,
+  ButtonFollow,
 } from "./UserCard.styled";
+
+import { updateUserInfo } from "../../services/usersApi";
 
 import logo from "../../assets/logoGoit.png";
 import topImage from "../../assets/topCardImage.png";
 
 // import { fetchUsers } from "../../services/usersApi";
-import { Loader } from "../Loader/Loader";
+// import { Loader } from "../Loader/Loader";
 
 export function UserCard({ user }) {
+  // const { id, avatar, followers, following, tweets } = user;
+
   const [followStatus, setfollowStatus] = useState(user.following);
   const [followQty, setFollowQty] = useState(user.followers);
 
   const handleChange = () => {
     setfollowStatus(!followStatus);
+
+    if (followStatus) {
+      updateUserInfo(user.id, {
+        following: !followStatus,
+        followers: followQty - 1,
+      });
+      setFollowQty(followQty - 1);
+    }
+    if (!followStatus) {
+      updateUserInfo(user.id, {
+        following: !followStatus,
+        followers: followQty + 1,
+      });
+      setFollowQty(followQty + 1);
+    }
   };
 
   return (
@@ -32,15 +55,20 @@ export function UserCard({ user }) {
             <AvatarImage src={user.avatar} alt="user avatar" />
           </AvatarCircle>
         </ImageWrapper>
-        <div>
-          <p>{user.name}</p>
-          <p>{user.tweets}</p>
-          <p>{user.followers}</p>
+        <InfoWrapper>
+          <InfoTweets>{user.tweets.toLocaleString("en-US")} tweets</InfoTweets>
+          <InfoFollowers>
+            {followQty.toLocaleString("en-US")} followers
+          </InfoFollowers>
 
-          <button onClick={() => handleChange(user.id)}>
+          <ButtonFollow
+            type="button"
+            onClick={() => handleChange(user.id)}
+            style={{ background: followStatus ? "#5CD3A8" : "#EBD8FF" }}
+          >
             {followStatus ? "Following" : "Follow"}
-          </button>
-        </div>
+          </ButtonFollow>
+        </InfoWrapper>
       </UserCardItem>
     </>
   );

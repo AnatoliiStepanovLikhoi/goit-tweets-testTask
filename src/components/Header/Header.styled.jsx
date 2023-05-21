@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { TiMessages } from "react-icons/ti";
 
 export const HeaderWrapper = styled.header`
   position: relative;
@@ -22,4 +24,23 @@ export const HeaderWrapper = styled.header`
       inset 0px -2.19582px 4.39163px #ae7be3;
     /* inset 0px 4.39163px 3.29372px #fbf8ff; */
   }
+`;
+
+export const HeaderLink = styled(NavLink)`
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+
+  &:last-child {
+    margin-left: 16px;
+  }
+
+  &.active {
+    color: #5cd3a8;
+  }
+`;
+
+export const MessageLogo = styled(TiMessages)`
+  width: 40px;
+  height: 40px;
 `;

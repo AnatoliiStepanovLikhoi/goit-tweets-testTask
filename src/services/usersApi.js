@@ -20,3 +20,14 @@ export async function fetchUsers(page, limit, filter) {
     console.log(error);
   }
 }
+
+export async function updateUserInfo(id, body) {
+  try {
+    console.log(id);
+    await axios.put(`/${id}`, { ...body }).then(({ data }) => {
+      return data;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
