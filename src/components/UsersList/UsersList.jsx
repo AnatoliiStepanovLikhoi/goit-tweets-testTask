@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchUsers } from "../../services/usersApi";
 import { Loader } from "../Loader/Loader";
 import { UserCard } from "../UserCard/UserCard";
+import { UsersListWrapper } from "../UsersList/UsersList.styled";
 
 export function UsersList() {
   const [isLoading, setIsloading] = useState(false);
@@ -43,7 +44,7 @@ export function UsersList() {
 
   return (
     <>
-      <ul>
+      <UsersListWrapper>
         {isLoading && <Loader />}
         {users?.length > 0 &&
           users.map((user) => <UserCard key={user.id} user={user} />)}
@@ -51,7 +52,7 @@ export function UsersList() {
         {showLoadMoreButton && (
           <button onClick={handlePagination}>Load More</button>
         )}
-      </ul>
+      </UsersListWrapper>
     </>
   );
 }
