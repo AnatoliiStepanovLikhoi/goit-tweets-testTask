@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 import {
   UserCardItem,
   ImageWrapper,
@@ -17,12 +18,7 @@ import { updateUserInfo } from "../../services/usersApi";
 import logo from "../../assets/logoGoit.png";
 import topImage from "../../assets/topCardImage.png";
 
-// import { fetchUsers } from "../../services/usersApi";
-// import { Loader } from "../Loader/Loader";
-
 export function UserCard({ user }) {
-  // const { id, avatar, followers, following, tweets } = user;
-
   const [followStatus, setfollowStatus] = useState(user.following);
   const [followQty, setFollowQty] = useState(user.followers);
 
@@ -73,3 +69,13 @@ export function UserCard({ user }) {
     </>
   );
 }
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.bool.isRequired,
+    tweets: PropTypes.number.isRequired,
+  }),
+};

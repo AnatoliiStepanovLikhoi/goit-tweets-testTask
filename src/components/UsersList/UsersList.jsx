@@ -11,8 +11,8 @@ import {
 } from "../UsersList/UsersList.styled";
 
 export function UsersList() {
-  const [isLoading, setIsloading] = useState(false);
-  const [showLoadMoreButton, setShowLoadMoreButton] = useState(true);
+  const [isLoading, setIsloading] = useState(true);
+  const [showLoadMoreButton, setShowLoadMoreButton] = useState(false);
   const [page, setPage] = useState(1);
   const limit = 6;
   const [users, setUsers] = useState([]);
@@ -47,13 +47,13 @@ export function UsersList() {
 
   return (
     <>
+      {isLoading && <Loader />}
       <UsersListWrapper>
-        {isLoading && <Loader />}
         {users?.length > 0 &&
           users.map((user) => <UserCard key={user.id} user={user} />)}
       </UsersListWrapper>
       <LoadMoreWrapper>
-        {showLoadMoreButton && (
+        {showLoadMoreButton && !isLoading && (
           <LoadMoreButton onClick={handlePagination}>Load More</LoadMoreButton>
         )}
       </LoadMoreWrapper>

@@ -1,4 +1,4 @@
-import { UsersList } from "../components/UsersList/UsersList";
+import { UsersList } from "../../components/UsersList/UsersList";
 import { BackButton, GoBackWrapper } from "./TweetsPage.styled";
 
 const TweetsPage = () => {

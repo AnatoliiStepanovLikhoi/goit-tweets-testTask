@@ -1,7 +1,9 @@
+import { LoaderWrapper, LoaderText } from "./Loader.styled";
+
 export function Loader() {
   return (
-    <div>
-      <p>Loading in progress...</p>
-    </div>
+    <LoaderWrapper>
+      <LoaderText>Loading in progress...</LoaderText>
+    </LoaderWrapper>
   );
 }
